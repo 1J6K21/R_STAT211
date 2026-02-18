@@ -475,7 +475,7 @@ sd <- sqrt(variance)
 # # pnorm(q, mean, sd) - Calculates the cumulative distribution function (CDF), P(X <= q)
 # # qnorm(p, mean, sd) - Calculates the quantile function (inverse CDF), returns value x s.t. P(X <= x) = p
 # # dnorm(x, mean, sd) - Calculates the probability density function (PDF), returns the height of the curve at x
-
+qnorm(0.99,2007,232)
 # # runif(n,a,b) - Generates n random deviates from a uniform distribution between a and b
 # # dunif(x,a,b) - Calculates the density (height) of the uniform distribution at x
 # # punif(q,a,b) - Calculates the cumulative probability P(X <= q) for a uniform distribution

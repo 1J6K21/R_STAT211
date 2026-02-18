@@ -144,7 +144,7 @@ p = \frac{N_i}{N}
 % -------------------------------------------------
 \section*{Histograms – Bin Rules}
 
-\subsection*{Square Root Rule}
+\subsection*{Square Root Rule (No. Bins)}
 \[
 k \approx \sqrt{n}
 \]
@@ -214,6 +214,12 @@ P(A) = \frac{\text{number of favorable outcomes}}
 \[
 P(A|B) = \frac{P(A \cap B)}{P(B)}
 \quad \text{(if } P(B) > 0)
+\]
+
+\subsection*{Bayes' Theorem}
+
+\[
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}
 \]
 
 \subsection*{Multiplication Rule}
@@ -309,6 +315,10 @@ E(X) = np
 \subsection*{Continuous}
 
 \[
+f(x) = \frac{d}{dx}F(x)
+\]
+
+\[
 f(x) \ge 0
 \]
 
@@ -372,6 +382,32 @@ x_p = \mu + z_p \sigma
 
 \[
 IQR = 2(0.67449)\sigma \approx 1.349\sigma
+\]
+
+\subsection*{Empirical Rule (Normal Distribution)}
+
+Approximately:
+
+\[
+68\% \text{ within } 1\sigma
+\]
+
+\[
+95\% \text{ within } 2\sigma
+\]
+
+\[
+99.7\% \text{ within } 3\sigma
+\]
+
+\subsection*{Effect of Linear Transformation on Expectation and Variance}
+
+\[
+E(\alpha + \beta X) = \alpha + \beta E(X)
+\]
+
+\[
+\mathrm{Var}(\alpha + \beta X) = \beta^2 \mathrm{Var}(X)
 \]
 
 \end{multicols}

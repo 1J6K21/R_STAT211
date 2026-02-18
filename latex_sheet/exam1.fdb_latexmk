@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1771391387.8614 "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheet/exam1.tex" "exam1.pdf" "exam1" 1771391388.13565 0
-  "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheet/exam1.tex" 1771391387.39233 5281 10e2471aacdc5c50200a47c2a400cad6 ""
+["pdflatex"] 1771452351.24196 "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheet/exam1.tex" "exam1.pdf" "exam1" 1771452351.70224 0
+  "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheet/exam1.tex" 1771452351.01512 5759 c5fccbc5f721ff30b677cd33a2f3e8f3 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -52,8 +52,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1768363960 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "exam1.aux" 1771391388.10619 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "exam1.tex" 1771391387.39233 5281 10e2471aacdc5c50200a47c2a400cad6 ""
+  "exam1.aux" 1771452351.66696 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "exam1.tex" 1771452351.01512 5759 c5fccbc5f721ff30b677cd33a2f3e8f3 ""
   (generated)
   "exam1.aux"
   "exam1.log"
