@@ -1,0 +1,325 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb, multicol}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{multicols}{3}
+
+\section*{Joint Distributions}
+
+\textbf{Joint PMF (discrete):}
+\[
+p_{X,Y}(x,y)=P(X=x,Y=y)
+\]
+\[
+\sum_x \sum_y p_{X,Y}(x,y)=1
+\]
+
+\textbf{Joint PDF (continuous):}
+\[
+f_{X,Y}(x,y)
+\]
+\[
+\int\int f_{X,Y}(x,y)\,dx\,dy=1
+\]
+
+\textbf{Marginal Distributions}
+
+\textbf{How to find marginals from joint:}
+
+Discrete:
+\[
+p_X(x)=\sum_y p_{X,Y}(x,y)
+\]
+\[
+p_Y(y)=\sum_x p_{X,Y}(x,y)
+\]
+
+Continuous:
+\[
+f_X(x)=\int_{-\infty}^{\infty} f_{X,Y}(x,y)\,dy
+\]
+\[
+f_Y(y)=\int_{-\infty}^{\infty} f_{X,Y}(x,y)\,dx
+\]
+
+---
+
+\section*{Conditional Distributions}
+
+\textbf{Definition (discrete):}
+\[
+p_{Y|X}(y|x)=\frac{p_{X,Y}(x,y)}{p_X(x)}
+\]
+
+\textbf{Definition (continuous):}
+\[
+f_{Y|X}(y|x)=\frac{f_{X,Y}(x,y)}{f_X(x)}
+\]
+
+\textbf{How to find conditional density step-by-step:}
+
+1. Start with joint density $f_{X,Y}(x,y)$  
+2. Find marginal $f_X(x)$ by integrating out $y$  
+3. Divide:
+\[
+f_{Y|X}(y|x)=\frac{f_{X,Y}(x,y)}{f_X(x)}
+\]
+
+Similarly,
+\[
+f_{X|Y}(x|y)=\frac{f_{X,Y}(x,y)}{f_Y(y)}
+\]
+
+---
+
+\section*{Independence}
+
+$X$ and $Y$ are independent if:
+
+Discrete:
+\[
+p_{X,Y}(x,y)=p_X(x)p_Y(y)
+\]
+
+Continuous:
+\[
+f_{X,Y}(x,y)=f_X(x)f_Y(y)
+\]
+
+If independent:
+\[
+E[XY]=E[X]E[Y]
+\]
+
+---
+
+\section*{Expectation}
+
+\textbf{Discrete:}
+\[
+E[X]=\sum_x x p_X(x)
+\]
+
+\textbf{Continuous:}
+\[
+E[X]=\int_{-\infty}^{\infty} x f_X(x)\,dx
+\]
+
+\textbf{Function of RV:}
+\[
+E[g(X)]=\sum g(x)p_X(x)
+\]
+\[
+E[g(X)]=\int g(x)f_X(x)\,dx
+\]
+
+\textbf{Linearity of Expectation}
+\[
+E[aX+b]=aE[X]+b
+\]
+\[
+E[X+Y]=E[X]+E[Y]
+\]
+
+---
+
+\section*{Variance}
+
+\textbf{Definition:}
+\[
+\text{Var}(X)=E[(X-\mu)^2]
+\]
+Simplified:
+\[
+\text{Var}(X)=E[X^2] - \mu_x^2
+\]
+
+\textbf{Shortcut Formula:}
+\[
+\text{Var}(X)=E[X^2]-(E[X])^2
+\]
+
+\[
+\text{Var}(aX+b)=a^2\text{Var}(X)
+\]
+
+---
+
+\section*{Covariance}
+
+\textbf{Definition:}
+\[
+\text{Cov}(X,Y)=E[(X-\mu_X)(Y-\mu_Y)]
+\]
+
+\textbf{Computational Formula:}
+\[
+\text{Cov}(X,Y)=E[XY]-E[X]E[Y]
+\]
+Simplified:
+\[
+\text{Cov}(X,Y)=E[XY]-\mu _x \mu _y
+\]
+
+\[
+\text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)+2\text{Cov}(X,Y)
+\]
+
+If independent:
+\[
+\text{Cov}(X,Y)=0
+\]
+
+---
+
+\section*{Correlation}
+
+\[
+\rho_{X,Y}=\frac{\text{Cov}(X,Y)}{\sigma_X\sigma_Y}
+\]
+
+\[
+-1 \le \rho \le 1
+\]
+
+---
+
+\section*{Conditional Expectation}
+
+\[
+E[Y|X=x]=\sum_y y\,p_{Y|X}(y|x)
+\]
+
+\[
+E[Y|X=x]=\int y\,f_{Y|X}(y|x)\,dy
+\]
+
+\textbf{Law of Total Expectation}
+\[
+E[Y]=E[E[Y|X]]
+\]
+
+---
+
+\section*{Law of Total Variance}
+
+\[
+\text{Var}(Y)=E[\text{Var}(Y|X)]+\text{Var}(E[Y|X])
+\]
+
+---
+
+\section*{Transformations of Random Variables}
+
+If $Y=g(X)$ and $g$ is monotone:
+
+\[
+f_Y(y)=f_X(g^{-1}(y))\left|\frac{d}{dy}g^{-1}(y)\right|
+\]
+
+\textbf{Expectation and Variance under transformation}
+
+\[
+E[aX+b]=aE[X]+b
+\]
+\[
+\text{Var}(aX+b)=a^2\text{Var}(X)
+\]
+
+---
+
+\section*{CDF and PDF Relationship}
+
+\[
+F_X(x)=P(X\le x)
+\]
+
+If continuous:
+\[
+f_X(x)=\frac{d}{dx}F_X(x)
+\]
+
+\[
+F_X(x)=\int_{-\infty}^{x} f_X(t)\,dt
+\]
+
+---
+
+\section*{Sampling Distributions}
+
+Let $X_1,\dots,X_n$ i.i.d.
+
+\textbf{Sample Mean}
+\[
+\bar X=\frac{1}{n}\sum_{i=1}^n X_i
+\]
+
+\[
+E[\bar X]=\mu
+\]
+
+\[
+\text{Var}(\bar X)=\frac{\sigma^2}{n}
+\]
+
+\[
+SD(\bar X)=\frac{\sigma}{\sqrt n}
+\]
+
+---
+
+\section*{Central Limit Theorem}
+
+For large $n$:
+
+\[
+\frac{\bar X-\mu}{\sigma/\sqrt n}\approx N(0,1)
+\]
+
+\[
+\bar X \approx N\left(\mu,\frac{\sigma^2}{n}\right)
+\]
+
+---
+
+\section*{Empirical Estimators}
+
+Sample mean:
+\[
+\bar x=\frac{1}{n}\sum x_i
+\]
+
+Sample variance:
+\[
+s^2=\frac{1}{n-1}\sum (x_i-\bar x)^2
+\]
+
+Sample covariance:
+\[
+s_{XY}=\frac{1}{n-1}\sum (x_i-\bar x)(y_i-\bar y)
+\]
+
+Sample correlation:
+\[
+r=\frac{s_{XY}}{s_X s_Y}
+\]
+
+---
+
+\section*{Bayes' Theorem (General Form)}
+
+\[
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\]
+
+Continuous:
+\[
+f_{X|Y}(x|y)=\frac{f_{Y|X}(y|x)f_X(x)}{f_Y(y)}
+\]
+
+---
+
+\end{multicols}
+\end{document}
