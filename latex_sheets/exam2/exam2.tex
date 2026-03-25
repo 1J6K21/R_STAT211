@@ -117,10 +117,7 @@ E[g(X)]=\int g(x)f_X(x)\,dx
 
 \textbf{Linearity of Expectation}
 \[
-E[aX+b]=aE[X]+b
-\]
-\[
-E[X+Y]=E[X]+E[Y]
+E[aX+bY+c]=aE[X]+bE[Y]+c
 \]
 
 ---
@@ -145,6 +142,11 @@ Simplified:
 \text{Var}(aX+b)=a^2\text{Var}(X)
 \]
 
+\textbf{If independent:}
+\[
+\text{Var}(aX+bY+c)=a^2\text{Var}(X)+b^2\text{Var}(Y)
+\]
+
 ---
 
 \section*{Covariance}
@@ -163,8 +165,9 @@ Simplified:
 \text{Cov}(X,Y)=E[XY]-\mu _x \mu _y
 \]
 
+\textbf{General form (not independent):}
 \[
-\text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)+2\text{Cov}(X,Y)
+\text{Var}(aX+bY)=a^2\text{Var}(X)+b^2\text{Var}(Y)+2ab\,\text{Cov}(X,Y)
 \]
 
 If independent:
@@ -251,36 +254,74 @@ F_X(x)=\int_{-\infty}^{x} f_X(t)\,dt
 
 Let $X_1,\dots,X_n$ i.i.d.
 
-\textbf{Sample Mean}
+\textbf{Sample Mean:}
 \[
 \bar X=\frac{1}{n}\sum_{i=1}^n X_i
 \]
 
 \[
-E[\bar X]=\mu
+E[\bar X]=\mu, \quad \text{Var}(\bar X)=\frac{\sigma^2}{n}, \quad SD(\bar X)=\frac{\sigma}{\sqrt n}
 \]
 
+\textbf{If population normal:}
 \[
-\text{Var}(\bar X)=\frac{\sigma^2}{n}
+\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
 \]
 
+\textbf{Sample Proportion:}
 \[
-SD(\bar X)=\frac{\sigma}{\sqrt n}
+E[\hat{p}] = p, \quad SD(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}
+\]
+
+---
+
+\section*{Variance of Diff. of Sample Means (Dependent)}
+
+Let $\bar{X}_1, \bar{X}_2$ be sample means from samples of size $n_1, n_2$.
+
+\textbf{General (dependent case):}
+\[
+\text{Var}(\bar{X}_1 - \bar{X}_2) = \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} - 2\,\text{Cov}(\bar{X}_1, \bar{X}_2)
+\]
+
+\textbf{Covariance of sample means:}
+\[
+\text{Cov}(\bar{X}_1, \bar{X}_2) = \frac{1}{n_1 n_2} \sum_{i=1}^{n_1} \sum_{j=1}^{n_2} \text{Cov}(X_i, Y_j)
+\]
+
+\textbf{Special case (paired samples, $n_1 = n_2 = n$):}
+\[
+\text{Var}(\bar{X}_1 - \bar{X}_2) = \frac{\sigma_1^2}{n} + \frac{\sigma_2^2}{n} - 2\frac{\text{Cov}(X_1, X_2)}{n}
+\]
+
+\textbf{Sample SD of differences ($s_D$) shortcut:}
+\[
+s_D = \sqrt{s_X^2 + s_Y^2 - (2 \cdot r \cdot s_X \cdot s_Y)}
+\]
+
+\textbf{If independent:}
+\[
+\text{Cov}(\bar{X}_1, \bar{X}_2)=0 \implies \text{Var}(\bar{X}_1 - \bar{X}_2) = \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}
 \]
 
 ---
 
 \section*{Central Limit Theorem}
 
-For large $n$:
-
+\textbf{For mean (large $n \ge 30$):}
 \[
-\frac{\bar X-\mu}{\sigma/\sqrt n}\approx N(0,1)
+Z = \frac{\bar X-\mu}{\sigma/\sqrt n}\approx N(0,1)
 \]
 
 \[
 \bar X \approx N\left(\mu,\frac{\sigma^2}{n}\right)
 \]
+
+\textbf{For proportion:}
+\[
+\hat{p} \approx N\left(p, \frac{p(1-p)}{n}\right)
+\]
+(valid if $np \ge 15$, $n(1-p) \ge 15$)
 
 ---
 
@@ -320,6 +361,85 @@ f_{X|Y}(x|y)=\frac{f_{Y|X}(y|x)f_X(x)}{f_Y(y)}
 \]
 
 ---
+
+---
+
+\section*{Standard Error (SE)}
+
+\[
+SE(\bar{X}) = \frac{\sigma}{\sqrt{n}} \quad \text{or} \quad \frac{S}{\sqrt{n}}
+\]
+\[
+SE(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}
+\]
+
+---
+
+\section*{Confidence Intervals (General)}
+
+\[
+CI = \text{Estimator} \pm (\text{Critical Value})(SE)
+\]
+
+\textbf{Margin of Error:}
+\[
+MoE = (\text{Critical Value})(SE)
+\]
+
+A $100(1-\alpha)\%$ CI satisfies:
+\[
+P(L(X_1,\dots,X_n) \le \theta \le U(X_1,\dots,X_n)) = 1-\alpha
+\]
+
+\textbf{Interpretation:}
+In repeated sampling, $(1-\alpha)$ proportion of intervals contain $\theta$.
+
+---
+
+\section*{Specific CIs}
+
+\textbf{CI for Mean ($\sigma$ known):}
+\[
+\bar{X} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}
+\]
+
+\textbf{CI for Mean ($\sigma$ unknown):}
+\[
+\bar{X} \pm t_{\alpha/2, n-1} \frac{S}{\sqrt{n}}
+\]
+
+\textbf{CI for Proportion:}
+\[
+\hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]
+
+\textbf{Key Notes:}
+\begin{itemize}
+\item CI length = $2 \times MoE$
+\item Larger $n \Rightarrow$ smaller CI
+\item Higher confidence $\Rightarrow$ wider CI
+\item CLT requires large $n$ or normal population
+\end{itemize}
+
+---
+
+\section*{Sample Size for Estimating $p$}
+
+Solving for length $L$ of $(1-\alpha)100\%$ CI:
+\[
+n = \frac{4z_{\alpha/2}^2 \hat{p}(1-\hat{p})}{L^2}
+\]
+(\textit{Round up to next integer. $\hat{p}$ often unknown before sample.})
+
+\textbf{If prior $p=p_0$ is known:}
+\[
+n = \frac{4z_{\alpha/2}^2 p_0(1-p_0)}{L^2}
+\]
+
+\textbf{If no prior info on $p$ is available:}
+\[
+n = \frac{z_{\alpha/2}^2}{L^2}
+\]
 
 \end{multicols}
 \end{document}
