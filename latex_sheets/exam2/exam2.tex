@@ -440,6 +440,373 @@ n = \frac{4z_{\alpha/2}^2 p_0(1-p_0)}{L^2}
 \[
 n = \frac{z_{\alpha/2}^2}{L^2}
 \]
+% =========================
+% Independence & Conditional Properties (Extended)
+% =========================
+\section*{Independence \& Conditional Properties}
+
+\textbf{Additional Independence Facts:}
+
+If $X, Y$ are independent ($X \perp Y$):
+\begin{itemize}
+    \item $f_{Y|X}(y|x) = f_Y(y)$ \quad (conditional = marginal)
+    \item $E[Y|X] = E[Y]$
+    \item $Var(Y|X) = Var(Y)$
+\end{itemize}
+
+$\Rightarrow$ Conditional distribution does \textbf{NOT} depend on $X$.
+
+\textbf{Functions of independent RVs:} \\
+If $X \perp Y$, then $g(X) \perp h(Y)$.
+
+\textbf{Uncorrelated vs Independent:}
+\begin{itemize}
+    \item Independence $\Rightarrow Cov(X,Y)=0$
+    \item $Cov(X,Y)=0$ does \textbf{NOT} $\Rightarrow$ independence
+    \item \textit{Counterexample:} $X \sim N(0,1), Y = X^2$
+\end{itemize}
+
+\hrule
+
+\textbf{Equivalent Conditions for Independence:}
+\begin{itemize}
+    \item Joint PMF/PDF: $f_{X,Y}(x,y) = f_X(x)f_Y(y)$
+    \item Joint CDF: $F_{X,Y}(x,y) = F_X(x)F_Y(y)$
+    \item Probabilities: $P(X \in A, Y \in B) = P(X \in A)P(Y \in B)$
+\end{itemize}
+
+\hrule
+
+\textbf{Conditional Expectation (General Function):}
+\[ E[g(X)|Y=y] = \sum_x g(x)p_{X|Y}(x|y) \quad \]\\ 
+\[ \text{or} \quad \int g(x)f_{X|Y}(x|y) \, dx \]
+
+$E[g(X)|Y]$ is a function of $Y \Rightarrow$ random variable.
+
+% =========================
+% Covariance & Correlation (Advanced)
+% =========================
+\section*{Covariance \& Correlation (Advanced)}
+
+\textbf{Covariance Properties:}
+\begin{itemize}
+    \item $Cov(X, c) = 0$
+    \item $Cov(aX + b, cY + d) = ac \, Cov(X,Y)$
+\end{itemize}
+
+\textbf{Correlation:}
+\[ \rho = \frac{Cov(X,Y)}{\sigma_X \sigma_Y} \]
+
+\textbf{Properties:}
+\begin{itemize}
+    \item Unit-free
+    \item $-1 \leq \rho \leq 1$
+\end{itemize}
+
+\textbf{Effect of Scaling:} \\
+$Corr(aX, bY)$ is:
+\begin{itemize}
+    \item Same sign as $\rho$ if $ab > 0$
+    \item Flips sign of $\rho$ if $ab < 0$
+\end{itemize}
+
+\textbf{Perfect Correlation:}
+\begin{itemize}
+    \item $\rho = 1 \iff Y = aX + b, a > 0$
+    \item $\rho = -1 \iff Y = aX + b, a < 0$
+\end{itemize}
+
+\textbf{Sample Correlation:}
+\begin{itemize}
+    \item Unit-free
+    \item $-1 \leq r \leq 1$
+\end{itemize}
+
+\hrule
+
+% =========================
+% Normal Distribution Moments
+% =========================
+\section*{Normal Distribution Moments}
+
+If $Z \sim N(0,1)$:
+
+\textbf{Odd moments:} $E[Z^{2k+1}] = 0$
+
+\textbf{First four moments:}
+\begin{itemize}
+    \item $E[Z] = 0$
+    \item $E[Z^2] = 1$
+    \item $E[Z^3] = 0$
+    \item $E[Z^4] = 3$
+\end{itemize}
+
+\hrule
+
+% =========================
+% Conditional Variance
+% =========================
+\section*{Conditional Variance}
+
+\textbf{Definition:}
+\[ Var(Y|X=x) = E[(Y - E[Y|X=x])^2 | X=x] \]
+
+\textbf{Shortcut:}
+\[ Var(Y|X) = E[Y^2 | X] - (E[Y|X])^2 \]
+
+\textbf{Law of Iterated Expectation (Product):}
+\[ E[XY] = E[ X E[Y|X] ] \]
+
+\hrule
+
+% =========================
+% Sampling & Estimator Properties
+% =========================
+\section*{Sampling \& Estimator Properties}
+
+\textbf{Bias:}
+\[ Bias(\hat{\theta}) = E[\hat{\theta}] - \theta \]
+
+\textbf{Unbiased:}
+\begin{itemize}
+    \item $E[\bar{X}] = \mu$
+    \item $E[\hat{p}] = p$
+\end{itemize}
+
+\textbf{Standard Error:}
+\begin{itemize}
+    \item $SE(\bar{X}) = \sigma/\sqrt{n}$ ($\sigma$ known)
+    \item $SE(\bar{X}) = s/\sqrt{n}$ ($\sigma$ unknown)
+    \item $SE(\hat{p}) = \sqrt{p(1-p)/n}$ (testing)
+    \item $SE(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}$ (CI)
+\end{itemize}
+
+\textbf{CLT for proportions:} $np \geq 15, n(1-p) \geq 15$
+
+\hrule
+
+% =========================
+% Confidence Intervals (Deeper)
+% =========================
+\section*{Confidence Intervals (Deeper)}
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item \textbf{Before sampling:} $P(\theta \in CI) = 1 - \alpha$
+    \item \textbf{After sampling:} $\theta$ is fixed $\Rightarrow$ probability is 0 or 1
+    \item \textbf{Long-run:} $(1-\alpha)\%$ of intervals contain $\theta$
+\end{itemize}
+
+\textbf{Trade-off:}
+\begin{itemize}
+    \item Higher confidence $\Rightarrow$ wider interval
+    \item Larger $n \Rightarrow$ narrower interval
+\end{itemize}
+
+\textbf{Sample Size for Mean ($\sigma$ known):}
+\[ n = \left( \frac{z_{\alpha/2} \sigma}{MoE} \right)^2 \quad \text{(Round UP)} \]
+
+\hrule
+
+% =========================
+% Hypothesis Testing Framework
+% =========================
+\section*{Hypothesis Testing Framework}
+
+\textbf{Hypotheses:} $H_0$ (null), $H_a$ (alternative)
+
+\textbf{Test Statistic:}
+\[ \frac{\text{statistic} - \text{null value}}{SE} \]
+
+\textbf{$p$-value:} $P(\text{result as extreme} \mid H_0 \text{ true})$
+
+\textbf{Decision Rule:}
+\begin{itemize}
+    \item $p \leq \alpha \Rightarrow$ Reject $H_0$
+    \item $p > \alpha \Rightarrow$ Fail to reject $H_0$
+\end{itemize}
+
+\hrule
+
+% =========================
+% Specific Tests
+% =========================
+\section*{Specific Tests}
+
+\textbf{Z-test (mean, $\sigma$ known):} $Z = \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}}$
+
+\textbf{T-test ($\sigma$ unknown):} $T = \frac{\bar{X} - \mu_0}{s/\sqrt{n}}, \, df = n-1$
+
+\textbf{Z-test (proportion):} $Z = \frac{\hat{p} - p_0}{\sqrt{p_0(1-p_0)/n}}$
+
+\hrule
+
+% =========================
+% Errors \& Power
+% =========================
+\section*{Errors \& Power}
+
+\textbf{Type I Error:} Reject $H_0$ when true. \\
+\textbf{Type II Error:} Fail to reject $H_0$ when false.
+
+\textbf{Power:} $Power = 1 - \beta = P(\text{reject } H_0 \mid H_0 \text{ false})$
+
+\hrule
+
+% =========================
+% Paired Data
+% =========================
+\section*{Paired Data}
+
+Let $D = X_1 - X_2$:
+\begin{itemize}
+    \item $E[D] = \mu_D$
+    \item $Var(D) = \sigma_1^2 + \sigma_2^2 - 2Cov(X_1,X_2)$
+\end{itemize}
+
+\textbf{Paired t-test:} $T = \frac{\bar{D} - \mu_{D,0}}{s_D / \sqrt{n}}, \, df = n - 1$
+
+\hrule
+
+% =========================
+% Sample Size for Proportion
+% =========================
+\section*{Sample Size for Proportion}
+
+\textbf{With estimate $\hat{p}$:}
+\[ n = \frac{z_{\alpha/2}^2 \hat{p}(1-\hat{p})}{MoE^2} \]
+
+\textbf{Conservative (no info):}
+\[ n = \frac{z_{\alpha/2}^2}{4 MoE^2} \]
+
+(Always \textbf{ROUND UP})
+
+% =========================
+% Ultra-Condensed Logic + Edge Cases
+% =========================
+\section*{Ultra-Condensed Logic \& Edge Cases}
+
+\textbf{Independence Checklist:}
+\begin{itemize}
+    \item If $f_{Y|X}(y|x)$ depends on $x \Rightarrow$ \textbf{NOT} independent
+    \item If $E[Y|X]$ depends on $X \Rightarrow$ \textbf{NOT} independent
+    \item If $Var(Y|X)$ depends on $X \Rightarrow$ \textbf{NOT} independent
+\end{itemize}
+\textbf{Fast test:} Check if $f_{X,Y}(x,y) = f_X(x)f_Y(y)$.
+
+\hrule
+
+\textbf{Covariance \& Expectation Tricks:}
+\begin{itemize}
+    \item $E[aX + bY] = aE[X] + bE[Y]$
+    \item $Cov(X,Y) = 0 \centernot\implies$ independence (unless jointly normal)
+    \item If $(X,Y)$ jointly normal: $Cov(X,Y)=0 \Rightarrow$ independence
+\end{itemize}
+
+\hrule
+
+\textbf{Conditional Expectation Tricks:}
+\textbf{Tower Property (extended):}
+\[ E[E[g(X,Y)|X]] = E[g(X,Y)] \]
+\textit{Special case:} $E[E[Y|X]] = E[Y]$
+
+\hrule
+
+\textbf{Variance Decomposition Insight:}
+\textbf{Law of Total Variance:}
+\[ Var(Y) = E[Var(Y|X)] + Var(E[Y|X]) \]
+\textit{Interpretation:} Total variance = "within variability" + "between variability"
+
+\hrule
+
+% =========================
+% Hypothesis Testing Shortcuts
+% =========================
+\section*{Hypothesis Testing Shortcuts}
+
+\textbf{Test Statistic Pattern:}
+\[ \text{Test Stat} = \frac{\text{Estimator} - \text{Null}}{SE} = \frac{\text{signal}}{\text{noise}} \]
+
+\textbf{Rejection Regions ($Z/T$):}
+\begin{itemize}
+    \item \textbf{Right-tailed:} reject if $stat > critical$
+    \item \textbf{Left-tailed:} reject if $stat < -critical$
+    \item \textbf{Two-sided:} reject if $|stat| > critical$
+\end{itemize}
+
+\textbf{$p$-value shortcuts:}
+\begin{itemize}
+    \item \textbf{Right tail:} $P(Z > z)$
+    \item \textbf{Left tail:} $P(Z < z)$
+    \item \textbf{Two-sided:} $2P(Z > |z|)$
+\end{itemize}
+
+\hrule
+
+% =========================
+% Confidence Interval Shortcuts
+% =========================
+\section*{Confidence Interval Shortcuts}
+
+\textbf{CI $\leftrightarrow$ Test Link:}
+Reject $H_0: \mu = \mu_0 \iff \mu_0 \notin CI$
+
+\textbf{Margin of Error ($MoE$):}
+\[ MoE = (\text{critical value}) \times (SE) \]
+\[ \text{CI width} = 2 \times MoE \]
+
+\textbf{Quick intuition:}
+\begin{itemize}
+    \item Bigger $n \Rightarrow \downarrow SE \Rightarrow$ tighter CI
+    \item Bigger $\sigma \Rightarrow \uparrow SE \Rightarrow$ wider CI
+\end{itemize}
+
+\hrule
+
+% =========================
+% Proportion Nuances
+% =========================
+\section*{Proportion Nuances}
+
+\textbf{Testing vs CI:}
+\begin{itemize}
+    \item \textbf{Test} uses $p_0$ in $SE = \sqrt{p_0(1-p_0)/n}$
+    \item \textbf{CI} uses $\hat{p}$ in $SE = \sqrt{\hat{p}(1-\hat{p})/n}$
+\end{itemize}
+\textit{Reason:} The test assumes $H_0$ is true.
+
+\textbf{Worst-case variance:}
+$p(1-p)$ is maximized at $p = 0.5$.
+$\Rightarrow$ Conservative $n$ uses $0.25$ in the numerator.
+
+\hrule
+
+% =========================
+% Paired Data Insight (High Yield)
+% =========================
+\section*{Paired Data Insight}
+
+\textbf{Variance of the Difference ($D = X_1 - X_2$):}
+\[ Var(D) = \sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2 \]
+\begin{itemize}
+    \item $\rho > 0 \Rightarrow$ reduces variance $\Rightarrow$ tighter CI
+    \item $\rho < 0 \Rightarrow$ increases variance
+\end{itemize}
+
+\hrule
+
+% =========================
+% Final Exam Strategy Notes
+% =========================
+\section*{Final Exam Strategy}
+
+\textbf{Common Mistakes to Avoid:}
+\begin{itemize}
+    \item Using $\hat{p}$ instead of $p_0$ in hypothesis tests.
+    \item Forgetting $df = n-1$ in t-tests.
+    \item Forgetting the factor of 2 in two-sided $p$-values.
+    \item Forgetting to \textbf{round UP} for sample size $n$.
+\end{itemize}
 
 \end{multicols}
 \end{document}
