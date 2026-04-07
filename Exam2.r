@@ -542,3 +542,32 @@ IQR(x)
 # ex: qt(p=0.9825, df=32)
 
 qt(p=1-0.041, df=29)
+
+
+### EXAM CHEAT SHEET: PROBABILITIES & QUANTILES ###
+
+# --- 1. NORMAL DISTRIBUTION N(0,1) ---
+# pnorm(z) computes Area to the LEFT: P(Z < z)
+pnorm(z)               # P(Z < z)  [Lower tail]
+1 - pnorm(z)           # P(Z > z)  [Upper tail]
+pnorm(z1) - pnorm(z2)  # P(z2 < Z < z1) [Between two values]
+
+# Absolute Value / Two-Tailed
+2 * (1 - pnorm(abs(z)))      # P(|Z| > |z|)  [Two-tail probability]
+1 - 2 * (1 - pnorm(abs(z)))  # P(|Z| <= |z|) [Middle area]
+
+# Quantiles (Percentiles)
+qnorm(1 - alpha)       # 100(1-alpha)-th percentile
+qnorm(1 - alpha/2)     # Critical value for two-sided (e.g., 1.96 for 0.05)
+
+
+# --- 2. STUDENT'S T DISTRIBUTION ---
+# Identical logic to pnorm/qnorm but requires degrees of freedom (nu)
+pt(t, nu)              # P(T < t)
+1 - pt(t, nu)          # P(T > t)
+2 * (1 - pt(abs(t), nu))     # P(|T| > |t|) [Commonly used for p-values]
+1 - 2 * (1 - pt(abs(t), nu)) # P(|T| <= |t|)
+
+# Quantiles (Percentiles)
+qt(1 - alpha, nu)      # t-critical value (one-sided)
+qt(1 - alpha/2, nu)    # t-critical value (two-sided)
