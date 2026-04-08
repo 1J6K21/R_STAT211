@@ -167,7 +167,7 @@ Simplified:
 
 \textbf{General form (not independent):}
 \[
-\text{Var}(aX+bY)=a^2\text{Var}(X)+b^2\text{Var}(Y)+2ab\,\text{Cov}(X,Y)
+\text{Var}(aX \pm bY)=a^2\text{Var}(X)+b^2\text{Var}(Y)\pm 2ab\,\text{Cov}(X,Y)
 \]
 
 If independent:
@@ -281,7 +281,7 @@ Let $\bar{X}_1, \bar{X}_2$ be sample means from samples of size $n_1, n_2$.
 
 \textbf{General (dependent case):}
 \[
-\text{Var}(\bar{X}_1 - \bar{X}_2) = \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} - 2\,\text{Cov}(\bar{X}_1, \bar{X}_2)
+\text{Var}(\bar{X}_1 \pm \bar{X}_2) = \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} \pm 2\,\text{Cov}(\bar{X}_1, \bar{X}_2)
 \]
 
 \textbf{Covariance of sample means:}
@@ -662,6 +662,8 @@ Let $D = X_1 - X_2$:
 \begin{itemize}
     \item $E[D] = \mu_D$
     \item $Var(D) = \sigma_1^2 + \sigma_2^2 - 2Cov(X_1,X_2)$
+    \item $\ s_D^2 = \frac{\sum_{i=1}^{n} (D_i - \bar{D})^2}{n-1}, \text{ where } D_i = X_{1,i} - X_{2,i}$
+
 \end{itemize}
 
 \textbf{Paired t-test:} $T = \frac{\bar{D} - \mu_{D,0}}{s_D / \sqrt{n}}, \, df = n - 1$
@@ -806,6 +808,33 @@ $\Rightarrow$ Conservative $n$ uses $0.25$ in the numerator.
     \item Forgetting $df = n-1$ in t-tests.
     \item Forgetting the factor of 2 in two-sided $p$-values.
     \item Forgetting to \textbf{round UP} for sample size $n$.
+\end{itemize}
+
+\textbf{R Probability Functions: \{prefix\}\{suffix\}}
+\begin{itemize}
+    \item \textbf{Prefixes:} 
+    \begin{itemize}
+        \item \texttt{d}: Density (PDF/PMF height) [1, 2]
+        \item \texttt{p}: Cumulative Probability ($P(X \le q)$) [1, 2]
+        \item \texttt{q}: Quantile/Inverse CDF (finds $x$ given $p$) [1, 2]
+        \item \texttt{r}: Random Generation [3]
+    \end{itemize}
+    \item \textbf{Suffixes (Distributions):}
+    \begin{itemize}
+        \item \texttt{norm(q, mean, sd)}: Normal Distribution [2, 4]
+        \item \texttt{t(q, df)}: Student's t Distribution [5, 6]
+        \item \texttt{binom(x, size, prob)}: Binomial Distribution [7]
+        \item \texttt{unif(q, min, max)}: Uniform Distribution [2, 7]
+        \item \item \textbf{Critical Value (Z):} \texttt{qnorm(1 - alpha/2)} for two-sided [6].
+        \item \textbf{Critical Value (T):} \texttt{qt(1 - alpha/2, df)} for two-sided [7].
+    \end{itemize}
+    \item \textbf{Descriptive \& Utility:}
+    \begin{itemize}
+        \item \texttt{mean()}, \texttt{sd()}, \texttt{var()}, \texttt{IQR()}, \texttt{quantile(x, p)} [3, 5, 8]
+        \item \texttt{summary()}, \texttt{table()}, \texttt{prop.table()}, \texttt{round(val, n)} [1-3, 9]
+        \item \texttt{rowSums()}, \texttt{colSums()}, \texttt{sum()} [10, 11]
+    \end{itemize}
+    
 \end{itemize}
 
 \end{multicols}

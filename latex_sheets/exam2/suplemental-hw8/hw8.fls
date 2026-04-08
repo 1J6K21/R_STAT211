@@ -1,8 +1,8 @@
-PWD /Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2
+PWD /Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2/suplemental-hw8
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2/hw8.tex
+INPUT /Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2/suplemental-hw8/hw8.tex
 OUTPUT hw8.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1774404156.9443 "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2/hw8.tex" "hw8.pdf" "hw8" 1774404157.22774 0
-  "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2/hw8.tex" 1774404156.31744 4490 e661b35d74308048e737e0c23cb5a2c2 ""
+["pdflatex"] 1775546361.24205 "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2/suplemental-hw8/hw8.tex" "hw8.pdf" "hw8" 1775546361.88425 0
+  "/Users/jonathankalsky/Documents/GitHub/R_stat211/latex_sheets/exam2/suplemental-hw8/hw8.tex" 1774404156.31744 4490 e661b35d74308048e737e0c23cb5a2c2 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -50,7 +50,7 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1768363960 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "hw8.aux" 1774404157.19618 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "hw8.aux" 1775546361.84799 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
   "hw8.tex" 1774404156.31744 4490 e661b35d74308048e737e0c23cb5a2c2 ""
   (generated)
   "hw8.aux"
