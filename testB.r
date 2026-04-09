@@ -56,3 +56,12 @@ n = 64
 x = 7.5
 z = (x-m)/sd*sqrt(64)
 1-pnorm(z)
+
+cat("\n\n EXAM A:\n\n")
+cat("\n\n Q1:\n\n")
+
+x = c(5,16,9)
+mean(x)
+sd(x)
+qt((1-0.92)/2,2)
+t.test(x, conf.level = 0.92)
