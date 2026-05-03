@@ -1,0 +1,393 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb, multicol}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{multicols}{3}
+
+\section*{Joint Distributions}
+
+\textbf{Joint PMF (discrete):}
+\[
+p_{X,Y}(x,y)=P(X=x,Y=y)
+\]
+\[
+\sum_x \sum_y p_{X,Y}(x,y)=1
+\]
+
+\textbf{Joint PDF (continuous):}
+\[
+f_{X,Y}(x,y)
+\]
+\[
+\int\int f_{X,Y}(x,y)\,dx\,dy=1
+\]
+
+\textbf{Marginal Distributions}
+
+\textbf{How to find marginals from joint:}
+
+Discrete:
+\[
+p_X(x)=\sum_y p_{X,Y}(x,y)
+\]
+\[
+p_Y(y)=\sum_x p_{X,Y}(x,y)
+\]
+
+Continuous:
+\[
+f_X(x)=\int_{-\infty}^{\infty} f_{X,Y}(x,y)\,dy
+\]
+\[
+f_Y(y)=\int_{-\infty}^{\infty} f_{X,Y}(x,y)\,dx
+\]
+
+---
+
+\section*{Conditional Distributions}
+
+\textbf{Definition (discrete):}
+\[
+p_{Y|X}(y|x)=\frac{p_{X,Y}(x,y)}{p_X(x)}
+\]
+
+\textbf{Definition (continuous):}
+\[
+f_{Y|X}(y|x)=\frac{f_{X,Y}(x,y)}{f_X(x)}
+\]
+
+\textbf{How to find conditional density step-by-step:}
+
+1. Start with joint density $f_{X,Y}(x,y)$  
+2. Find marginal $f_X(x)$ by integrating out $y$  
+3. Divide:
+\[
+f_{Y|X}(y|x)=\frac{f_{X,Y}(x,y)}{f_X(x)}
+\]
+
+Similarly,
+\[
+f_{X|Y}(x|y)=\frac{f_{X,Y}(x,y)}{f_Y(y)}
+\]
+
+---
+
+\section*{Independence}
+$X$ and $Y$ are independent if:
+\begin{itemize}
+    \item Discrete: $p_{X,Y}(x,y)=p_X(x)p_Y(y)$
+    \item Continuous: $f_{X,Y}(x,y)=f_X(x)f_Y(y)$
+    \item CDF: $F_{X,Y}(x,y) = F_X(x)F_Y(y)$
+    \item Probabilities: $P(X \in A, Y \in B) = P(X \in A)P(Y \in B)$
+\end{itemize}
+
+\textbf{If Independent ($X \perp Y$):}
+\begin{itemize}
+    \item $f_{Y|X}(y|x) = f_Y(y)$ (Conditional = Marginal)
+    \item $E[Y|X] = E[Y]$ and $Var(Y|X) = Var(Y)$
+    \item $E[XY]=E[X]E[Y]$ and $Cov(X,Y)=0$
+    \item $g(X) \perp h(Y)$ for any functions $g, h$
+\end{itemize}
+
+\textbf{Checklist for dependence:} Not independent if $f_{Y|X}(y|x)$, $E[Y|X]$, or $Var(Y|X)$ depend on $X$.
+\quad \textit{Note:} $Cov(X,Y)=0 \centernot\implies$ independence (unless jointly normal).
+
+---
+
+\section*{Expectation}
+\textbf{Definitions:}
+\begin{itemize}
+    \item Discrete: $E[X]=\sum_x x p_X(x)$
+    \item Continuous: $E[X]=\int_{-\infty}^{\infty} x f_X(x)\,dx$
+    \item Function $g(X,Y)$: $E[g(X,Y)]=\sum_x \sum_y g(x,y)p(x,y)$ or $\iint g(x,y)f(x,y)\,dx\,dy$
+\end{itemize}
+
+\textbf{Linearity:} $E[aX+bY+c]=aE[X]+bE[Y]+c$
+
+\textbf{Conditional Expectation:}
+\begin{itemize}
+    \item $E[Y|X=x]=\sum_y y\,p_{Y|X}(y|x)$ or $\int y\,f_{Y|X}(y|x)\,dy$
+    \item $E[g(X)|Y=y] = \sum_x g(x)p_{X|Y}(x|y)$ or $\int g(x)f_{X|Y}(x|y) \, dx$
+    \item \textbf{Tower Property (Extended):} $E[E[g(X,Y)|X]] = E[g(X,Y)]$
+    \item \textbf{LIE Expansion:} $E[XY] = E[ X E[Y|X] ]$
+\end{itemize}
+
+---
+
+\section*{Expectation \& Variance Identities}
+\textbf{Law of Total Expectation:} $E[Y]=E[E[Y|X]]$
+\textbf{Law of Total Variance:} $Var(Y)=E[Var(Y|X)]+Var(E[Y|X])$
+\textbf{Linearity:} $E[aX+bY+c]=aE[X]+bE[Y]+c$
+\textbf{Scaling:} $Var(aX+b)=a^2Var(X)$
+\textbf{Joint Var:} $Var(aX \pm bY)=a^2Var(X)+b^2Var(Y) \pm 2abCov(X,Y)$
+\textbf{Independence:} If $X \perp Y$, then $Var(aX \pm bY)=a^2Var(X)+b^2Var(Y)$.
+
+\section*{Transformations of Random Variables}
+
+If $Y=g(X)$ and $g$ is monotone:
+
+\[
+f_Y(y)=f_X(g^{-1}(y))\left|\frac{d}{dy}g^{-1}(y)\right|
+\]
+
+
+\section*{CDF and PDF Relationship}
+
+\[
+F_X(x)=P(X\le x)
+\]
+
+If continuous:
+\[
+f_X(x)=\frac{d}{dx}F_X(x)
+\]
+
+\[
+F_X(x)=\int_{-\infty}^{x} f_X(t)\,dt
+\]
+
+---
+
+\section*{Sampling Distributions \& SE \& CLT}
+Let $X_1,\dots,X_n$ be i.i.d. with mean $\mu$ and variance $\sigma^2$.
+
+\textbf{Sample Mean $\bar X$:} $E[\bar X]=\mu$ (Unbiased), $Var(\bar X)=\frac{\sigma^2}{n}$, $SE(\bar X)=\frac{\sigma}{\sqrt n}$
+
+\textbf{Difference/Sum of Sample Means ($n_1, n_2$):}
+\begin{itemize}
+    \item $Var(\bar{X}_1 \pm \bar{X}_2) = \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} \pm 2\,\text{Cov}(\bar{X}_1, \bar{X}_2)$
+    \item \textbf{Cov of Means:} $\text{Cov}(\bar{X}_1, \bar{X}_2) = \frac{1}{n_1 n_2} \sum_{i} \sum_{j} \text{Cov}(X_i, Y_j)$
+\end{itemize}
+
+\textbf{Sample Proportion $\hat{p}$:} $E[\hat{p}]=p$ (Unbiased), $SE(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}$
+
+\textbf{Central Limit Theorem (CLT):}
+For large $n$ (usually $n \ge 30$):
+\begin{itemize}
+    \item $\bar X \approx N\left(\mu, \frac{\sigma^2}{n}\right) \implies Z = \frac{\bar X-\mu}{\sigma/\sqrt n} \approx N(0,1)$
+    \item $\hat{p} \approx N\left(p, \frac{p(1-p)}{n}\right)$ (if $np \ge 15, n(1-p) \ge 15$)
+\end{itemize}
+
+\textbf{Estimator Properties:}
+\begin{itemize}
+    \item $Bias(\hat{\theta}) = E[\hat{\theta}] - \theta$
+    \item $SE(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}$ (used for CIs)
+    \item $SE(\hat{p}) = \sqrt{p_0(1-p_0)/n}$ (used for Hypothesis Tests)
+\end{itemize}
+
+---
+
+\section*{Empirical Estimators}
+
+Sample mean:
+\[
+\bar x=\frac{1}{n}\sum x_i
+\]
+
+Sample variance:
+\[
+s^2=\frac{1}{n-1}\sum (x_i-\bar x)^2
+\]
+
+Sample covariance:
+\[
+s_{XY}=\frac{1}{n-1}\sum (x_i-\bar x)(y_i-\bar y)
+\]
+
+Sample correlation:
+\[
+r=\frac{s_{XY}}{s_X s_Y}
+\]
+
+---
+
+\section*{Bayes' Theorem (General Form)}
+
+\[
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\]
+
+Continuous:
+\[
+f_{X|Y}(x|y)=\frac{f_{Y|X}(y|x)f_X(x)}{f_Y(y)}
+\]
+
+---
+
+\section*{Inference: Confidence Intervals}
+\textbf{General Form:} $CI = \text{Estimator} \pm (\text{Critical Value}) \times SE$
+\textbf{Margin of Error (MoE):} $MoE = (\text{Critical Value}) \times SE \implies \text{Width} = 2 \times MoE$
+
+\textbf{Specific Confidence Intervals:}
+\begin{itemize}
+    \item \textbf{Mean ($\sigma$ known):} $\bar{X} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}$
+    \item \textbf{Mean ($\sigma$ unknown):} $\bar{X} \pm t_{\alpha/2, n-1} \frac{S}{\sqrt{n}}$
+    \item \textbf{Proportion:} $\hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
+\end{itemize}
+
+\textbf{Sample Size $n$ for $(\text{MoE})$ or Length $(L)$:}
+\begin{itemize}
+    \item \textbf{Mean:} $n = \left( \frac{z_{\alpha/2} \sigma}{MoE} \right)^2 \quad \text{or} \quad n = \frac{4z_{\alpha/2}^2 \sigma^2}{L^2}$
+    \item \textbf{Prop (Prior $\hat{p}$):} $n = \frac{z_{\alpha/2}^2 \hat{p}(1-\hat{p})}{MoE^2} \quad \text{or} \quad n = \frac{4z_{\alpha/2}^2 \hat{p}(1-\hat{p})}{L^2}$
+    \item \textbf{Prop (Conservative):} $n = \frac{z_{\alpha/2}^2}{4 MoE^2} \quad \text{or} \quad n = \frac{z_{\alpha/2}^2}{L^2}$
+\end{itemize}
+\textit{Always \textbf{round UP} for $n$. Note: $L = 2 \times MoE$.}
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item \textbf{Long-run:} $100(1-\alpha)\%$ of theoretical intervals contain the true parameter.
+    \item Higher confidence $\Rightarrow$ wider interval. Larger $n \Rightarrow$ narrower interval.
+    \item Reject $H_0: \theta = \theta_0$ at level $\alpha$ if $\theta_0 \notin (1-\alpha)100\%$ CI.
+\end{itemize}
+
+---
+
+\section*{Inference: Hypothesis Testing}
+\textbf{Framework:} $H_0$ (null) vs $H_a$ (alternative).
+\textbf{Decision Rules:}
+\begin{itemize}
+    \item $p\text{-value} \le \alpha \implies$ Reject $H_0$. (Small $p$, reject null).
+    \item Right-tail: $P(Z > z)$. Left-tail: $P(Z < z)$. Two-sided: $2P(Z > |z|)$.
+    \item Rejection: Reject if $|stat| > z_{\alpha/2}$ (two-sided) or $stat > z_\alpha$ (right-tail).
+\end{itemize}
+
+\textbf{Specific Tests:}
+\begin{itemize}
+    \item \textbf{Z-mean ($\sigma$ known):} $Z = \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}}$
+    \item \textbf{T-mean ($\sigma$ unknown):} $T = \frac{\bar{X} - \mu_0}{s/\sqrt{n}}, \, df = n-1$
+    \item \textbf{Z-prop:} $Z = \frac{\hat{p} - p_0}{\sqrt{p_0(1-p_0)/n}}$ (valid if $np_0 \ge 15, n(1-p_0) \ge 15$)
+\end{itemize}
+
+\textbf{Error Types \& Power:}
+\begin{itemize}
+    \item \textbf{Type I ($\alpha$):} Reject $H_0$ when true.
+    \item \textbf{Type II ($\beta$):} Fail to reject $H_0$ when false.
+    \item \textbf{Power ($1-\beta$):} $P(\text{Reject } H_0 | H_0 \text{ is false})$.
+\end{itemize}
+
+\section*{Normal Distribution Moments \& Properties}
+If $Z \sim N(0,1)$:
+\begin{itemize}
+    \item \textbf{Odd moments:} $E[Z^{2k+1}] = 0$
+    \item \textbf{First four moments:} $E[Z]=0, E[Z^2]=1, E[Z^3]=0, E[Z^4]=3$
+\end{itemize}
+
+\textbf{Linear Combinations:} If $X \sim N(\mu_x, \sigma_x^2)$ and $Y \sim N(\mu_y, \sigma_y^2)$ are \textbf{Independent}:
+\[ aX + bY \sim N(a\mu_x + b\mu_y, a^2\sigma_x^2 + b^2\sigma_y^2) \]
+
+\textbf{Jointly Normal Independence:} If $(X,Y)$ jointly normal then $\text{Cov}(X,Y) = 0 \iff X \perp Y$.
+
+% =========================
+% Paired Data
+% =========================
+\section*{Paired Data}
+Let $D = X_1 - X_2$ be the differences for $n$ pairs.
+\begin{itemize}
+    \item $E[D] = \mu_1 - \mu_2 = \mu_D$
+    \item $Var(D) = \sigma_1^2 + \sigma_2^2 - 2Cov(X_1, X_2)$
+    \item $Var(D) = \sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2$ (Shortcut if $\rho$ given)
+    \item \textbf{Insight:} If $\rho > 0$, variance is reduced (better efficiency).
+    \item $s_D^2 = \frac{\sum (D_i - \bar{D})^2}{n-1}$
+    \item \textbf{Sample $s_D$ Shortcut:} $s_D = \sqrt{s_X^2 + s_Y^2 - 2(r)(s_X)(s_Y)}$
+\end{itemize}
+\textbf{Paired T-test:} $T = \frac{\bar{D} - \mu_{D,0}}{s_D / \sqrt{n}}, \, df = n - 1$
+
+\hrule
+
+% =========================
+% Proportion Nuances
+% =========================
+\section*{Proportion Nuances}
+
+\textbf{Testing vs CI:}
+\begin{itemize}
+    \item \textbf{Test} uses $p_0$ in $SE = \sqrt{p_0(1-p_0)/n}$ (assumes $H_0$ is true).
+    \item \textbf{CI} uses $\hat{p}$ in $SE = \sqrt{\hat{p}(1-\hat{p})/n}$.
+\end{itemize}
+
+\textbf{Worst-case variance:}
+$p(1-p)$ is maximized at $p = 0.5$.
+$\Rightarrow$ Conservative $n$ uses $0.25$ in the numerator.
+
+\hrule
+
+% =========================
+% Final Exam Strategy Notes
+% =========================
+\section*{Final Exam Strategy}
+
+\textbf{Common Mistakes to Avoid:}
+\begin{itemize}
+    \item Using $\hat{p}$ instead of $p_0$ in hypothesis tests.
+    \item Forgetting $df = n-1$ in t-tests.
+    \item Forgetting the factor of 2 in two-sided $p$-values.
+    \item Forgetting to \textbf{round UP} for sample size $n$.
+    \item If there is a group, an n, or average use SE (reliability of the average) not sd(indiv.)
+\end{itemize}
+
+\textbf{R Probability Functions: \{prefix\}\{suffix\}}
+\begin{itemize}
+    \item \textbf{Prefixes:} 
+    \begin{itemize}
+        \item \texttt{d}: Density (PDF/PMF height) [1, 2]
+        \item \texttt{p}: Cumulative Probability ($P(X \le q)$) [1, 2]
+        \item \texttt{q}: Quantile/Inverse CDF (finds $x$ given $p$) [1, 2]
+        \item \texttt{r}: Random Generation [3]
+    \end{itemize}
+    \item \textbf{Suffixes (Distributions):}
+    \begin{itemize}
+        \item \texttt{norm(q, mean, sd)}: Normal Distribution [2, 4]
+        \item \texttt{t(q, df)}: Student's t Distribution [5, 6]
+        \item \texttt{binom(x, size, prob)}: Binomial Distribution [7]
+        \item \texttt{unif(q, min, max)}: Uniform Distribution [2, 7]
+        \item \textbf{Critical Value (Z):} \texttt{qnorm(1 - alpha/2)} for two-sided [6].
+        \item \textbf{Critical Value (T):} \texttt{qt(1 - alpha/2, df)} for two-sided.
+        \item \textit{Example CL 96.5\% (n=33):} \texttt{qt(p=0.9825, df=32)}
+    \end{itemize}
+    \item \textbf{Descriptive \& Utility:}
+    \begin{itemize}
+        \item \texttt{mean()}, \texttt{sd()}, \texttt{var()}, \texttt{IQR()}, \texttt{quantile(x, p)} [3, 5, 8]
+        \item \texttt{summary()}, \texttt{table()}, \texttt{prop.table()}, \texttt{round(val, n)} [1-3, 9]
+        \item \texttt{rowSums()}, \texttt{colSums()}, \texttt{sum()} [10, 11]
+    \end{itemize}
+    \subsection*{R Functions: Simple Linear Regression}
+    \begin{itemize}
+        \item \texttt{$model \leftarrow lm(Y \sim X)$}: Fits a simple linear regression model of response \texttt{Y} on predictor \texttt{X} [1].
+        \item \texttt{summary(model)}: Extracts the coefficient estimates ($\hat{\beta}_0, \hat{\beta}_1$), their standard errors, $t$-values, $p$-values, the residual standard error ($\hat{\sigma}$), and the Multiple $R^2$ [1].
+        \item \texttt{anova(model)}: Generates the ANOVA table, including Regression Sum of Squares (SSReg), Error Sum of Squares (SSError), Mean Squares (MS), and the Global F-statistic [1].
+    \end{itemize}
+    
+    
+\end{itemize}
+
+\section*{Additional Formulas \& Properties}
+
+\subsection*{Two Independent Means ($\mu_1 - \mu_2$)}
+\textbf{Equal Variances:} $S_p^2 = \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}$, \quad $df = n_1 + n_2 - 2$\\
+$SE = S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$, \quad $T = \frac{(\bar{X}_1 - \bar{X}_2) - \Delta_0}{SE}$, \quad CI: $(\bar{X}_1 - \bar{X}_2) \pm t_{\alpha/2; df} SE$\\
+\textit{Check Rule:} Assume equal if $\frac{\max(S_1^2, S_2^2)}{\min(S_1^2, S_2^2)} < 5$ ($n\approx7$), $< 3$ ($n\approx15$), or $< 2$ ($n\approx30$).
+
+\textbf{Unequal Variances:} $SE = \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}$, \quad $T = \frac{(\bar{X}_1 - \bar{X}_2) - \Delta_0}{SE}$, \quad CI: $(\bar{X}_1 - \bar{X}_2) \pm t_{\alpha/2; \nu} SE$\\
+$df = \nu = \frac{(S_1^2/n_1 + S_2^2/n_2)^2}{(S_1^2/n_1)^2/(n_1-1) + (S_2^2/n_2)^2/(n_2-1)}$
+
+\subsection*{Two Independent Proportions ($p_1 - p_2$)}
+\textbf{Test ($H_0: p_1=p_2$):} Pooled $\hat{p} = \frac{n_1\hat{p}_1 + n_2\hat{p}_2}{n_1 + n_2}$, \quad $SE = \sqrt{\hat{p}(1 - \hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}$\\
+\textbf{CI \& Test ($H_0: p_1-p_2=\Delta_0 \neq 0$):} $SE = \sqrt{\frac{\hat{p}_1(1 - \hat{p}_1)}{n_1} + \frac{\hat{p}_2(1 - \hat{p}_2)}{n_2}}$\\
+$Z = \frac{(\hat{p}_1 - \hat{p}_2) - \Delta_0}{SE}$, \quad CI: $(\hat{p}_1 - \hat{p}_2) \pm z_{\alpha/2} SE$
+
+\subsection*{Simple Linear Regression ($Y = \beta_0 + \beta_1X + \epsilon$)}
+\textbf{Estimates:} $\hat{\beta}_1 = \frac{S_{X,Y}}{S_X^2} = r_{X,Y} \frac{S_Y}{S_X}$, \quad $\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{X}$\\
+\textbf{Residuals ($\hat{\epsilon}_i$):} $\sum \hat{\epsilon}_i = 0$, \quad $\sum X_i \hat{\epsilon}_i = 0$, \quad $\sum \hat{Y}_i \hat{\epsilon}_i = 0$. Line passes through $(\bar{X}, \bar{Y})$.\\
+\textbf{ANOVA:} $SSTotal = SSReg + SSError$, \quad $df: n-1 = 1 + (n-2)$\\
+$R^2 = \frac{SSReg}{SSTotal} = 1 - \frac{SSError}{SSTotal}$, \quad $\hat{\sigma}^2 = MSError = \frac{SSError}{n-2}$\\
+\textbf{Std. Errors:} $SE(\hat{\beta}_1) = \frac{\hat{\sigma}}{\sqrt{(n-1)S_X^2}}$, \quad $SE(\hat{\mu}_Y(x)) = \hat{\sigma}\sqrt{\frac{1}{n} + \frac{(x - \bar{X})^2}{\sum(X_i - \bar{X})^2}}$\\
+\textbf{F-test ($H_0: \beta_1=0$):} $F = \frac{MSReg}{MSError} = T^2$
+
+\subsection*{Concept Quick Hits}
+\textbf{Power:} $1 - P(\text{Type II Error})$. Probability of correctly rejecting a false $H_0$.\\
+\textbf{CI Width Trade-offs:} $n \uparrow \Rightarrow$ narrower width. Confidence Level $(1-\alpha) \uparrow \Rightarrow$ wider width.\\
+\textbf{CI Probability:} After sampling, the probability the CI contains truth is exactly 0 or 1.
+\end{multicols}
+\end{document}
