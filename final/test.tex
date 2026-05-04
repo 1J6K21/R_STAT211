@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\begin{document}
+
+\section*{R Cheat Sheet: Simple Linear Regression (STAT 211)}
+
+\subsection*{1. Model Estimation}
+\textbf{R Command:} \texttt{model <- lm(Y \textasciitilde{} X, data = my\_data)}
+
+\begin{itemize}
+    \item \texttt{lm}: Stands for "Linear Model."
+    \item \texttt{Y \textasciitilde{} X}: The formula notation. Read as "Y is modeled as a function of X."
+\end{itemize}
+
+\subsection*{2. Interpreting \texttt{summary(model)}}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{R Output Term} & \textbf{Stat Notation} & \textbf{Annotation} \\
+\midrule
+\texttt{(Intercept)} Estimate & $\hat{\beta}_0$ & The value of $Y$ when $X=0$. \\
+\texttt{X} Estimate & $\hat{\beta}_1$ & Slope: Avg. change in $Y$ per 1-unit $X$. \\
+\texttt{Std. Error} & $SE(\hat{\beta}_1)$ & Precision of the slope estimate. \\
+\texttt{t value} & $t_{obs}$ & Test statistic: $\frac{\hat{\beta}_1 - \beta_1^*}{SE(\hat{\beta}_1)}$. \\
+\texttt{Pr(>|t|)} & $p\text{-value}$ & Prob. of result if $H_0: \beta_1 = 0$ is true. \\
+\texttt{Residual std error} & $\hat{\sigma}$ (RMSE) & \textbf{Unclear notation:} This is the estimate of the \\ 
+& & standard deviation of the error term $\epsilon$. \\
+\texttt{Multiple R-squared} & $R^2$ & Proportion of variance explained by the model. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{3. Inference and Intervals}
+\begin{itemize}
+    \item \textbf{Confidence Interval for $\beta_1$:} \\
+    \texttt{confint(model, level = 0.95)} 
+    
+    \item \textbf{Mean Response Interval (CI):} \\
+    \texttt{predict(model, newdata, interval = "confidence")} \\
+    \textit{Annotation: Used for the average value of Y at a specific X.}
+    
+    \item \textbf{Individual Prediction Interval (PI):} \\
+    \texttt{predict(model, newdata, interval = "prediction")} \\
+    \textit{Annotation: Always wider than CI; used for a single future observation.}
+\end{itemize}
+
+\subsection*{4. ANOVA Table}
+\textbf{R Command:} \texttt{anova(model)}
+
+\begin{itemize}
+    \item \texttt{Sum Sq} (Regression): $SS_{Reg}$ --- Variation explained by $X$.
+    \item \texttt{Sum Sq} (Residuals): $SS_{Error}$ --- \textbf{Unclear notation:} R uses "Residuals" for Error.
+    \item \texttt{Mean Sq}: $MS = SS/df$. Note that $\hat{\sigma}^2 = MS_{Error}$.
+\end{itemize}
+
+\subsection*{5. Residual Diagnostics}
+\textbf{R Command:} \texttt{plot(model)}
+
+\begin{itemize}
+    \item \textbf{Residuals vs Fitted:} Checks \textit{Linearity} (look for no pattern) and \textit{Homoscedasticity} (look for constant vertical spread).
+    \item \textbf{Normal Q-Q:} Checks \textit{Normality}. Points should lie on the $45^\circ$ line. 
+    \item \textbf{Cook's Distance:} \textit{Annotation: Used to identify influential outliers.}
+\end{itemize}
+
+\end{document}
