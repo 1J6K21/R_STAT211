@@ -789,11 +789,30 @@ $Z = \frac{(\hat{p}_1 - \hat{p}_2) - \Delta_0}{SE}$, \quad CI: $(\hat{p}_1 - \ha
 ($\hat{\beta}_1$ and $r_{X,Y}$ will always be of the same sign.)
 
 \textbf{Residuals ($\hat{\epsilon}_i$):} $\sum \hat{\epsilon}_i = 0$, \quad $\sum X_i \hat{\epsilon}_i = 0$, \quad $\sum \hat{Y}_i \hat{\epsilon}_i = 0$. Line passes through $(\bar{X}, \bar{Y})$.\\
+\textbf{CI for B1:} $\hat{B_1} \pm t_{\alpha/2;n-2}SE(\hat{B_1}) | SE(\hat{B_1}) = \frac{\hat{\sigma}}{{\sqrt{(n-1)S_X^2}}}$\\
+\textbf{CI for true regression function $\mu_y(x) at X=x$:}\\
+$\hat{\mu_y(x)} \pm t_{\alpha/2;n-2}SE(\hat{\mu_y(x)}) | SE(\hat{\mu_y(x)}) = \hat{\sigma^2} \sqrt{\frac{1}{n} + \frac{(x-\hat{X})^2}{\sum_{i=1}^{n}(X_i - \hat{X})^2}}$\\
+\textbf{CI for future response $\hat{Y}(x) at X=x$:}\\
+$\hat{Y} \pm t_{\alpha/2;n-2}\sqrt{MS_Error + (SE(\hat{\mu_y(x)})^2} $\\
+\textbf{Test:} $T = \frac{\hat{B_1} - B_1^*}{SE(\hat{B_1})} \overset{B_1 = B_1^*}{\sim}t_{n-2}$
+
 \textbf{ANOVA:}\\
 $SSTotal = SSReg + SSError$, $df: n-1$\\
-$R^2 = \frac{SSReg}{SSTotal} = 1 - \frac{SSError}{SSTotal}=r^2_{X,Y}$\\ $\hat{\sigma}^2 = MSError = \frac{SSError}{n-2}$\\
+MSReg = SSReg ; MSError = $\frac{SSError}{n-2}$\\
+$R^2 = \frac{SSReg}{SSTotal} = 1 - \frac{SSError}{SSTotal}=r^2_{X,Y}$\\ 
+$\hat{\sigma}^2 = MSError = \frac{SSError}{n-2}=\frac{SS_{Error}}{df_{Error}}$\\
 \textbf{Std. Errors:} $SE(\hat{\beta}_1) = \frac{\hat{\sigma}}{\sqrt{(n-1)S_X^2}}$, \quad $SE(\hat{\mu}_Y(x)) = \hat{\sigma}\sqrt{\frac{1}{n} + \frac{(x - \bar{X})^2}{\sum(X_i - \bar{X})^2}}$\\
-\textbf{F-test ($H_0: \beta_1=0$):} $F = \frac{MSReg}{MSError} = T^2$
+\textbf{F-test($H_0:\beta_1=0$):}$F = \frac{MSReg}{MSError} = T^2$\\
+Large (F=$T^2$) indicates the model explains significant variation in Y
+
+\subsection*{Model Assumptions and Diagnostics}
+
+\textbf{Independence (Autocorrelation):} Plot residuals vs. observation order; random scatter is required. 
+\textbf{Durbin-Watson Test:} $DW \approx 2$ (No Autocorrelation), $DW < 2$ (Positive), $DW > 2$ (Negative). \\
+
+\textbf{Constant Variance (Homoscedasticity):} Plot residuals vs. $\hat{Y}_i$ or $X_i$. Must show an even vertical spread (a "cloud"). A funnel/wedge shape indicates a violation. \\
+
+\textbf{Normality:} Check Normal Q-Q Plot. Points must lie close to the diagonal line; "S" shapes or curves indicate non-normality.
 
 \subsection*{Concept Quick Hits}
 \textbf{Power:} $1 - P(\text{Type II Error})$. Probability of correctly rejecting a false $H_0$.\\
