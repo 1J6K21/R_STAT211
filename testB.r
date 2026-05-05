@@ -65,3 +65,15 @@ mean(x)
 sd(x)
 qt((1-0.92)/2,2)
 t.test(x, conf.level = 0.92)
+
+
+
+n1 = 248; p1 = 0.7302
+n2 = 200; p2 = 0.2015
+D = p1-p2
+alpha = 1-0.94
+z = qnorm(1-alpha/2)
+se = sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+lower = D - z*se
+upper = D + z*se
+cat("(", lower, ",", upper,")")

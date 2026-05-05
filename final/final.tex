@@ -20,15 +20,10 @@
 
 \subsection*{Population vs Sample}
 
-\textbf{Population Parameter} (true value, unknown)  
-\[
-\mu, \quad \sigma^2, \quad \sigma, \quad p
-\]
+\textbf{Population Parameter} (true value, unknown)  $\mu, \quad \sigma^2, \quad \sigma, \quad p$
 
-\textbf{Sample Statistic} (estimate of parameter)  
-\[
-\bar{x}, \quad s^2, \quad s, \quad \hat{p}
-\]
+
+\textbf{Sample Statistic} (estimate of parameter) $\bar{x}, \quad s^2, \quad s, \quad \hat{p}$
 
 \subsection*{Population Mean}
 \[
@@ -547,8 +542,15 @@ F_X(x)=\int_{-\infty}^{x} f_X(t)\,dt
 ---
 
 \section*{Sampling Distributions \& SE \& CLT}
-Let $X_1,\dots,X_n$ be i.i.d. with mean $\mu$ and variance $\sigma^2$.
 
+\subsection*{Uniform Distribution $U(a, b)$}
+
+\textbf{Definition:} All outcomes in the interval $[a, b]$ are equally likely. \\
+\textbf{PDF:} $f(x) = \frac{1}{b-a}$ for $a \le x \le b$ (and $0$ otherwise). \\
+\textbf{Mean \& Variance:} $E[X] = \frac{a+b}{2}$ and $Var(X) = \frac{(b-a)^2}{12}$. \\
+\textbf{Probability:} $P(x_1 < X < x_2) = \frac{\text{length of interval}}{\text{total length}} = \frac{x_2 - x_1}{b - a}$. \\
+
+Let $X_1,\dots,X_n$ be i.i.d. with mean $\mu$ and variance $\sigma^2$.
 \textbf{Sample Mean $\bar X$:} $E[\bar X]=\mu$ (Unbiased), $Var(\bar X)=\frac{\sigma^2}{n}$, $SE(\bar X)=\frac{\sigma}{\sqrt n}$
 
 \textbf{Difference/Sum of Sample Means ($n_1, n_2$):}
